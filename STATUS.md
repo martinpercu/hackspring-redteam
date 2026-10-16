@@ -54,8 +54,8 @@
 | Tests offline | N passed | `python tests/run_all.py` | |
 
 ## Links de la demo
-- Traza Arize LEAKED (baseline, hidden-docs): 
-- Traza Arize BLOCKED (guarded, hidden-docs): 
+- Traza Arize LEAKED (baseline, hidden-docs): ver `arize-shots/LINKS.md` (local, requiere login; no se publica)
+- Traza Arize BLOCKED (guarded, hidden-docs): ver `arize-shots/LINKS.md` (local, requiere login; no se publica)
 - Dashboard: http://localhost:8787 · Slides: `slides/index.html` · Video de respaldo: `backup/demo.mp4`
 
 ## Pedidos (agentes → humano). Formato: `BLOQUEADO: <qué> | INTENTÉ: <qué> | NECESITO: <qué>`

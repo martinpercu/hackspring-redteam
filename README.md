@@ -71,7 +71,7 @@ Model `gpt-4o-mini`, `temperature=0`, measured {{date/time}} with `python redtea
 ## Honest limits
 - **The gate works on text.** Obfuscation (base64, globs, scripts written to disk) can evade it. In production this must be OS / network permissions; here the sandbox's restricted network is the last layer.
 - **The unseen attack gets through the first time, on purpose** — that is what shows learning. What is learned is an exact path; it does not generalize to similar paths.
-- **The model still gets hijacked.** In our pre-event prototype run, the online judge flagged `hijacked` in guarded mode too (9/9); we re-measure it in this build: {{judge result pending T12 backfill}}. The gates protect, not the prompt.
+- **The model still gets hijacked.** In our pre-event prototype run, the online judge flagged `hijacked` in guarded mode too (9/9); we re-measured it in this build. In this build's run, the online judge flagged at least one LLM span as hijacked in 4 of 4 baseline traces and in 3 of 4 guarded traces (31 of 44 LLM spans in that run were judged). The gates protect, not the prompt.
 - **One victim model, 4 attacks and 2 legitimate tasks.** A demonstration, not a benchmark. `temperature=0` does not guarantee full determinism.
 - `LEAKED` means "the decoy token left through the exit tool", which is a mock.
 

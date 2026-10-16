@@ -31,7 +31,7 @@ Making attacks deterministic enough for a live demo; closing path-normalization 
 A measurable before/after, a detector with no judgment calls, and a demo that survives a dead wifi (recorded-run mode).
 
 ## What we learned
-The model gets hijacked either way: in our pre-event prototype run, the online judge flagged `hijacked` in guarded mode too (9/9); we re-measure it in this build: {{judge result pending T12 backfill}}. What saves you is the gates in the tools and the sandbox around them.
+The model gets hijacked either way: in our pre-event prototype run, the online judge flagged `hijacked` in guarded mode too (9/9); we re-measured it in this build. In this build's run, the online judge flagged at least one LLM span as hijacked in 4 of 4 baseline traces and in 3 of 4 guarded traces (31 of 44 LLM spans in that run were judged). What saves you is the gates in the tools and the sandbox around them.
 
 ## What's next
 Semantic gates, network/OS-level enforcement, multi-model comparison on the same battery, more attack techniques, Anchor Browser as the real browser.

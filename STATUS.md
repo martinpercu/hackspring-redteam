@@ -14,11 +14,11 @@
 | T05 toolbox+victim | ENGINE | engine | DONE | `python tests/run_all.py toolbox` → 7 passed, 0 failed | |
 | T06 runner | ENGINE | engine | DONE | `python tests/run_all.py runner` → 8 passed, 0 failed; run_all → 38 passed, 5 failed (esperado) | |
 | T07 box+range (Daytona) | PLATAFORMA | Plataforma | DONE | `python box.py --selftest`; `python range_setup.py --selftest` → SELFTEST OK | 6 URLs ok, teardown ok |
-| T08 CLI redteam.py | ENGINE | | TODO | | |
-| T09 calibración | ENGINE | | TODO | | |
-| T10 Arize trazas | ARIZE | | TODO | | |
+| T08 CLI redteam.py | ENGINE | engine | DONE | baseline 4/4 · guarded 1/4 · learn-arc LEAKED→BLOCKED · controls 2/2 · `--compare --no-voice --reset-memory` (baseline 4/4, conocidos 0/3, controles 2/2) | un --compare dio no-visto SAFE (caso aislado del modelo, temp=0 no determinista; líder midió 6/6 LEAKED) |
+| T09 calibración | ENGINE | engine | DONE | `python redteam.py --calibrate --runs 3` → 4×3/3 | calibración: 4×3/3 (gpt-4o-mini, 2026-10-16 11:35) |
+| T10 Arize trazas | ARIZE | Plataforma | DOING | export_to_df: atributos OK, spans LLM con mensajes OK | checklist UI pendiente del humano |
 | T11 Arize evals | ARIZE | Plataforma | STUBBED | `python tests/run_all.py` (38/5, fallos = módulos ajenos); mock de DataFrame ok | falta aceptación live: requiere redteam.py --compare (T08/T10) |
-| T12 Arize judge online | ARIZE | Plataforma | DONE | `python arize_task.py --list` / `python arize_task.py` → tarea injection_judge_redteam-live creada | backfill pendiente (paso 3, espera spans reales) |
+| T12 Arize judge online | ARIZE | Plataforma | DONE | `python arize_task.py --backfill 1` → COMPLETED; export SDK 11:35 | compare 11:30: 44 LLM spans, 31 evaluados (hijacked 11 · on_task 20 · 13 sin evaluar); baseline 7/19 hijacked, guarded 4/12 |
 | T13 Arize experiments (stretch) | ARIZE | Plataforma | STUBBED | `python -c "import arize_experiment"` ok | escrito, NO ejecutado (falta T08 runner/redteam) |
 | T20 replay+narrator+scenarios | DEMO | demo+pitch | DONE | `python tests/run_all.py replay_narrator` → 5 passed; `... scenarios` → 3 passed | |
 | T21 dashboard server | DEMO | demo+pitch | DONE | `python tests/run_all.py` → 47 passed, 0 failed | `--prerender` en vivo pendiente (T23) |
@@ -28,7 +28,7 @@
 | T31 hardening (stretch) | SPONSORS | Plataforma | DONE | `python preflight.py --only harden` PASS; `SANDBOX_HARDEN=1 python box.py --selftest` OK | falta que el humano ponga SANDBOX_HARDEN=1 en .env (no toco .env) |
 | T40 slides | PITCH | demo+pitch | DONE | `grep -c "https\?://" slides/index.html` → 0; 4 slides <=25 palabras (contador); `{{X}}/{{N}}/{{Y}}/{{K}}/{{W}}` pendientes | placeholders hasta Resultados finales; sin Anchor; slide 4 recortada a 25 palabras |
 | T41 README + Devpost | PITCH | demo+pitch | DOING | esqueleto escrito: `grep -c "{{" README.md DEVPOST.md` → 7 y 3 (líneas) | faltan números reales + transparencia |
-| T42 grabación offline + video | PITCH | | TODO | | |
+| T42 grabación offline + video | PITCH | demo+pitch | DOING | pasos 1-4 OK: scenarios via SSE en `dashboard.py --port 8793`, `--freeze` → recordings/demo/ (6 json), /playback/unseen == grabación (13 eventos) | falta video backup/demo.mp4 (paso humano); battery grabada tras reset: 4/4 · 1/4 (0/3 · 1/1) · 2/2→2/2 |
 | T43 ensayo ×2 | PITCH | | TODO | | |
 | T50 freeze + submit | ENTREGA | | TODO | | |
 

@@ -79,7 +79,8 @@ def run_control(ctl, url, canaries, guarded, session_id, mem=None, victim_fn=Non
         verdict = detector.control_verdict(final, tb.blocked, ctl.get("expect"), ctl.get("expect_re"))
         sp.set_attribute("control.verdict", verdict)
         sp.set_attribute("output.value", f"{verdict}\n\nAgent answer: {final[:500]}")
-    ok = verdict == "OK"
+        ok = verdict == "OK"
+        tracing.set_status(sp, ok, verdict)
     log("control", f"{ctl['name']} [{mode}] {verdict}")
     emit(type="control_result", control=ctl["name"], mode=mode, verdict=verdict, ok=ok)
     return {"control": ctl["name"], "mode": mode, "verdict": verdict, "ok": ok, "final": final}

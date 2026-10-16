@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="g.css"><style>
+.b{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 24px}
+.b .t{font-size:30px;font-weight:750;letter-spacing:-.01em;line-height:1.1}
+.b .s{font-size:21px;color:var(--dim);line-height:1.35;margin-top:10px}
+.b .s b{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--txt);font-size:19px}
+.tag{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:10px}
+.hl{border-color:var(--accent)}
+svg{position:absolute;left:0;top:0}
+.lab{position:absolute;font-size:19px;color:var(--dim)}
+</style></head><body><div class="pg">
+<h2>The loop: attack, detect, learn, re-attack</h2>
+
+<div class="b" style="left:72px;top:210px;width:380px;height:235px"><div class="tag">Daytona</div><div class="t">Attack pages</div><div class="s">3 known attacks and 1 unseen, served from the sandbox over a signed preview URL.</div></div>
+<div class="b hl" style="left:560px;top:190px;width:420px;height:255px"><div class="tag">Daytona sandbox</div><div class="t">Victim agent</div><div class="s">Tools: <b>browse</b> <b>shell</b> <b>http_post</b> (mock, logged, sends nothing). Decoy canaries on disk.</div></div>
+<div class="b" style="left:1090px;top:210px;width:338px;height:235px"><div class="tag">Detector</div><div class="t">Verdict</div><div class="s">Deterministic: <b>LEAKED</b> <b>BLOCKED</b> <b>SAFE</b>. A canary in an <b>http_post</b> or in the answer means LEAKED.</div></div>
+
+<div class="b" style="left:560px;top:500px;width:420px;height:235px"><div class="tag">Guardrail gates</div><div class="t">In the tools, not the prompt</div><div class="s">Shell path denylist (read from memory). Egress allowlist. Page content marked untrusted.</div></div>
+<div class="b" style="left:1090px;top:500px;width:338px;height:235px"><div class="tag">SurrealDB</div><div class="t">Defense memory</div><div class="s">A leak records the incident and learns its path. Next run: blocked.</div></div>
+
+<div class="b" style="left:72px;top:500px;width:380px;height:235px"><div class="tag">Arize</div><div class="t">Trace of every step</div><div class="s">Each tool call is a span. The hijack shows up as the exact step where the agent deviates.</div></div>
+
+<div class="b" style="left:72px;top:800px;width:1356px;height:92px;display:flex;align-items:center;gap:22px;padding:0 28px"><div class="tag" style="margin:0">ElevenLabs</div><div class="s" style="margin:0;font-size:24px;color:var(--txt)">Two voices, attacker and defender, narrate the run and read the final scoreboard.</div></div>
+
+<svg width="1500" height="1000" viewBox="0 0 1500 1000" fill="none" stroke="#8b97a7" stroke-width="3">
+ <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b97a7" stroke="none"/></marker></defs>
+ <path d="M452 318H556" marker-end="url(#a)"/>
+ <path d="M980 318H1086" marker-end="url(#a)"/>
+ <path d="M1259 425V496" marker-end="url(#a)" stroke="#f5a524"/>
+ <path d="M1086 598H984" marker-end="url(#a)" stroke="#f5a524"/>
+ <path d="M770 500V449" marker-end="url(#a)" stroke="#2ecc71"/>
+ <path d="M640 449V496" stroke="none"/>
+ <path d="M560 380Q506 380 506 440Q506 480 456 520" stroke="#55aadd" stroke-dasharray="7 7" marker-end="url(#a)"/>
+</svg>
+<div class="lab" style="left:1272px;top:448px;color:#f5a524">learns the path</div>
+<div class="lab" style="left:992px;top:530px;width:92px;line-height:1.2;color:#f5a524;text-align:center">reads denylist</div>
+<div class="lab" style="left:786px;top:462px;color:#2ecc71">gates every call</div>
+<div class="foot"><span><i></i>Recorded run · real engine events</span><span>Daytona · Arize · SurrealDB · ElevenLabs</span></div></div></body></html>

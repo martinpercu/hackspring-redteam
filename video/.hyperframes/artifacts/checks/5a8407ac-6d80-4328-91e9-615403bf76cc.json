@@ -1,0 +1,350 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 9,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 1 has 8 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-title\"> is a timeline element that contains nested <div id=\"in-title\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-title",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-title\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-problem\"> is a timeline element that contains nested <div id=\"in-problem\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-problem",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-problem\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d1\"> is a timeline element that contains nested <div id=\"in-d1\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d1",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d2\"> is a timeline element that contains nested <div id=\"in-d2\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d3\"> is a timeline element that contains nested <div id=\"in-d3\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d3",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d4\"> is a timeline element that contains nested <div id=\"in-d4\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d4",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-score\"> is a timeline element that contains nested <div id=\"in-score\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-score",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-score\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-close\"> is a timeline element that contains nested <div id=\"in-close\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-close",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-close\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 36.167,
+        "selector": "#d2-vv",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1094.93,
+          "top": 446.8,
+          "right": 1451.07,
+          "bottom": 536.99,
+          "width": 356.14,
+          "height": 90.19
+        },
+        "containerSelector": "#d2-w > div:nth-of-type(3) > div:nth-of-type(2)",
+        "text": "BLOCKED",
+        "fixHint": "Text is 356px x 90px inside 330px x 640px and overflows by up to 13px; widen the container to at least ~356px or shrink font-size from 78px to ~72px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 1108,
+          "top": 228,
+          "right": 1438,
+          "bottom": 868,
+          "width": 330,
+          "height": 640
+        },
+        "overflow": {
+          "left": 13.07,
+          "right": 13.07
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1094.93,
+          "y": 446.8,
+          "width": 356.14,
+          "height": 90.19
+        },
+        "firstSeen": 36.167,
+        "lastSeen": 36.167,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          36.167
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 67.167,
+        "selector": "#d4-s4 > span:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 283,
+          "top": 888.73,
+          "right": 729.31,
+          "bottom": 914.73,
+          "width": 446.31,
+          "height": 26
+        },
+        "containerSelector": "#d4-sub",
+        "text": "gate: matches '/home/daytona/app/config.json'",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 283,
+          "y": 888.73,
+          "width": 446.31,
+          "height": 26
+        },
+        "firstSeen": 67.167,
+        "lastSeen": 67.167,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          67.167
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 67.167,
+        "selector": "#d4-vv",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1093.33,
+          "top": 461.91,
+          "right": 1452.67,
+          "bottom": 552.91,
+          "width": 359.34,
+          "height": 91
+        },
+        "containerSelector": "#d4-w > div:nth-of-type(3) > div:nth-of-type(2)",
+        "text": "BLOCKED",
+        "fixHint": "Text is 359px x 91px inside 330px x 738px and overflows by up to 15px; widen the container to at least ~359px or shrink font-size from 78px to ~72px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 1108,
+          "top": 228,
+          "right": 1438,
+          "bottom": 966.13,
+          "width": 330,
+          "height": 738.13
+        },
+        "overflow": {
+          "left": 14.67,
+          "right": 14.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1093.33,
+          "y": 461.91,
+          "width": 359.34,
+          "height": 91
+        },
+        "firstSeen": 67.167,
+        "lastSeen": 67.167,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          67.167
+        ]
+      }
+    ],
+    "duration": 93,
+    "samples": [
+      5.167,
+      15.5,
+      25.833,
+      36.167,
+      46.5,
+      56.833,
+      67.167,
+      77.5,
+      87.833
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      5.167,
+      25.833,
+      46.5,
+      67.167,
+      87.833
+    ],
+    "checked": 105,
+    "passed": 105
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

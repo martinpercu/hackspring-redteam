@@ -1,0 +1,225 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 9,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 1 has 8 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-title\"> is a timeline element that contains nested <div id=\"in-title\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-title",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-title\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-problem\"> is a timeline element that contains nested <div id=\"in-problem\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-problem",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-problem\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d1\"> is a timeline element that contains nested <div id=\"in-d1\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d1",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d2\"> is a timeline element that contains nested <div id=\"in-d2\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d3\"> is a timeline element that contains nested <div id=\"in-d3\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d3",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-d4\"> is a timeline element that contains nested <div id=\"in-d4\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-d4",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-d4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-score\"> is a timeline element that contains nested <div id=\"in-score\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-score",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-score\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s-close\"> is a timeline element that contains nested <div id=\"in-close\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s-close",
+        "dataAttributes": {},
+        "sourceFile": "/Users/martin/linkedin-ofertas/hacksprint-6/live/video/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s-close\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 93,
+    "samples": [
+      5.167,
+      15.5,
+      25.833,
+      36.167,
+      46.5,
+      56.833,
+      67.167,
+      77.5,
+      87.833
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      5.167,
+      25.833,
+      46.5,
+      67.167,
+      87.833
+    ],
+    "checked": 101,
+    "passed": 101
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

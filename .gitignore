@@ -9,3 +9,7 @@ __pycache__/
 .playwright-mcp/
 recordings/last/
 backup/
+audio-preview/
+video/node_modules/
+video/out/
+arize-shots/

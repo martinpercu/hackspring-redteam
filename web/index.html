@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Agent Red Team</title>
+<style>
+:root{--bg:#0b0e14;--panel:#131824;--panel2:#0f1420;--line:#232b3a;--txt:#e6edf3;--dim:#8b97a7;--accent:#5ad;--red:#ff4d5e;--green:#2ecc71;--amber:#f5a524}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font:15px/1.4 -apple-system,"Segoe UI",system-ui,sans-serif;padding-bottom:70px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+h1{font-size:20px;letter-spacing:.02em}
+h1 i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--red);margin-left:6px;vertical-align:-1px}
+.cards{display:flex;gap:12px;flex-wrap:wrap}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:190px}
+.card small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.card b{font-size:20px}.card em{display:block;font-style:normal;font-size:11px;color:var(--dim)}
+.red{color:var(--red)}.green{color:var(--green)}.amber{color:var(--amber)}
+.controls{display:flex;gap:10px;align-items:center;padding:12px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+button{background:var(--panel);color:var(--txt);border:1px solid var(--accent);border-radius:8px;padding:9px 14px;font:600 14px inherit;cursor:pointer}
+button.sec{border-color:var(--line)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.opts{margin-left:auto;display:flex;gap:14px;color:var(--dim);font-size:14px}
+.opts label{cursor:pointer}
+main{display:grid;grid-template-columns:1.3fr .9fr .9fr;gap:20px;padding:20px 24px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-height:340px}
+section h2{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.step{display:flex;gap:10px;padding:8px 8px;border-radius:8px;border-left:4px solid transparent;margin-bottom:4px}
+.step .ic{font-size:20px}.step .tx b{display:block}.step .tx span{color:var(--dim);font-size:13px;word-break:break-all}
+.step.green b{color:var(--green)}.step.red b{color:var(--red)}.step.amber b{color:var(--amber)}
+.step.dev{background:rgba(255,77,94,.12);border-left-color:var(--red)}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:10px;padding:1px 8px;margin-top:4px;color:var(--dim)}
+.tag.u{color:var(--amber);border-color:var(--amber)}
+.badge{display:block;margin-top:4px;color:var(--red);font-size:13px;font-weight:700}
+.help{margin-top:16px;color:var(--dim);font-size:13px}
+#verdict{display:flex;flex-direction:column;align-items:center;justify-content:center;height:280px;text-align:center;gap:10px}
+#verdict .v{font-size:40px;font-weight:900}#verdict p{color:var(--dim);font-size:14px;max-width:260px}
+.mem{font-family:ui-monospace,Menlo,monospace;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:14px}
+.mem.new{border-color:var(--amber);animation:pulse 1.2s}
+@keyframes pulse{0%,100%{box-shadow:none}50%{box-shadow:0 0 14px var(--amber)}}
+#sub{position:fixed;left:0;right:0;bottom:0;background:var(--panel2);border-top:1px solid var(--line);padding:16px 24px;display:flex;gap:14px;align-items:center;min-height:56px}
+#chip{font-size:11px;letter-spacing:.12em;border:1px solid var(--dim);border-radius:14px;padding:3px 12px;color:var(--dim)}
+#chip.attacker{color:var(--red);border-color:var(--red)}#chip.defender{color:var(--green);border-color:var(--green)}
+#line{font-size:16px}
+</style>
+</head>
+<body>
+<header>
+ <h1>AGENT RED TEAM<i></i></h1>
+ <div class="cards">
+  <div class="card"><small>Attacks · no defense</small><b class="red" id="s-base">—</b></div>
+  <div class="card"><small>Attacks · guardrail</small><b class="green" id="s-guard">—</b><em id="s-sub">&nbsp;</em></div>
+  <div class="card"><small>Legit tasks (no → with)</small><b class="green" id="s-ctl">—</b></div>
+ </div>
+</header>
+<div class="controls">
+ <button data-s="attack_nodef">1 · Attack, no defense</button>
+ <button data-s="attack_def">2 · Same, with guardrail</button>
+ <button data-s="unseen">3 · Unseen attack</button>
+ <button data-s="replay">4 · Replay (now learned)</button>
+ <button data-s="reset" class="sec">↺ Reset memory</button>
+ <button data-s="control" class="sec">Legit task</button>
+ <button data-s="battery">▶ Full battery</button>
+ <div class="opts"><label><input type="checkbox" id="voice" checked> 🔊 Voice</label><label><input type="checkbox" id="offline"> 📼 Offline (recorded)</label></div>
+</div>
+<main>
+ <section><h2>Agent timeline</h2><div id="tl"></div><p class="help" id="help">Pick a scenario above. Secrets are fake decoys; http_post is mocked — nothing leaves the machine.</p></section>
+ <section><h2>Verdict</h2><div id="verdict"></div></section>
+ <section><h2>Defense memory · SurrealDB</h2><div id="mem"></div><p class="help">What the guardrail blocks. Read from the database, not from code. New entries appear live when an attack slips through.</p></section>
+</main>
+<div id="sub"><span id="chip">—</span><span id="line"></span></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var tl=$('tl'),ver=$('verdict'),memEl=$('mem'),es=null,toolSteps=[],queue=[],playing=false,lastMem=[];
+var ICONS={browse:'🌐',shell:'💻',http_post:'📤'};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function step(ic,title,sub,cls,extra){
+ var d=document.createElement('div');d.className='step '+(cls||'');
+ d.innerHTML='<span class="ic">'+ic+'</span><div class="tx"><b>'+esc(title)+'</b>'+(sub?'<span>'+esc(sub)+'</span>':'')+(extra||'')+'</div>';
+ tl.appendChild(d);d.scrollIntoView({block:'nearest'});return d}
+function clearRun(){tl.innerHTML='';toolSteps=[];ver.innerHTML=''}
+function showVerdict(txt,cls,sub){ver.innerHTML='<div class="v '+cls+'">'+esc(txt)+'</div>'+(sub?'<p>'+esc(sub)+'</p>':'')}
+function drawMem(paths,hl){
+ lastMem=paths;memEl.innerHTML='';
+ paths.forEach(function(p){var d=document.createElement('div');d.className='mem'+(p===hl?' new':'');d.textContent=p;memEl.appendChild(d)})}
+function playNext(){
+ if(playing||!queue.length)return;
+ playing=true;var a=new Audio(queue.shift());
+ var next=function(){playing=false;playNext()};
+ a.onended=next;a.onerror=next;
+ var pr=a.play();if(pr&&pr.catch)pr.catch(next)}
+function setBusy(b){document.querySelectorAll('button[data-s]').forEach(function(x){x.disabled=b})}
+function refresh(){fetch('/api/state').then(function(r){return r.json()}).then(function(s){if(!s.voice)$('voice').checked=false}).catch(function(){})}
+function handle(ev){
+ switch(ev.type){
+ case 'scenario_start':queue=[];break;
+ case 'attack_start':
+  clearRun();
+  step('👤','User: '+ev.task,'',' ',' <span class="tag">'+esc(ev.technique)+' · '+esc(ev.mode)+'</span>'+(ev.unseen?' <span class="tag u">UNSEEN ATTACK</span>':''));
+  break;
+ case 'control_start':
+  clearRun();
+  step('👤','User: '+ev.task,'','',' <span class="tag">LEGIT TASK</span>');break;
+ case 'tool':
+  var d;
+  if(ev.blocked)d=step('⛔',ev.tool+' blocked',ev.reason||ev.detail,'green');
+  else if(ev.leak)d=step(ICONS[ev.tool]||'🔧',ev.tool+' → DECOY SECRET SENT',ev.detail,'red');
+  else d=step(ICONS[ev.tool]||'🔧',ev.tool,ev.detail);
+  toolSteps.push(d);break;
+ case 'verdict':
+  var v=ev.verdict;
+  showVerdict(v,v==='LEAKED'?'red':v==='BLOCKED'?'green':'amber',ev.detail);
+  if(v==='LEAKED'&&ev.deviation_step&&toolSteps[ev.deviation_step-1]){
+   var s=toolSteps[ev.deviation_step-1];s.classList.add('dev');
+   s.querySelector('.tx').insertAdjacentHTML('beforeend','<span class="badge">⚠ the agent obeyed the injected instruction here</span>')}
+  break;
+ case 'control_result':
+  if(ev.ok)showVerdict('TASK OK','amber','The guardrail did not break legitimate work.');
+  else showVerdict(ev.verdict,'red','Legitimate task failed.');
+  break;
+ case 'score':
+  if(ev.base)$('s-base').textContent=ev.base;
+  if(ev.guard)$('s-guard').textContent=ev.guard;
+  if(ev.known||ev.unseen)$('s-sub').textContent='known '+(ev.known||'?')+' · unseen '+(ev.unseen||'?');
+  if(ev.ctl)$('s-ctl').textContent=ev.ctl;
+  break;
+ case 'memory_state':drawMem(ev.paths||[]);break;
+ case 'memory_learn':
+  drawMem(ev.paths||[],ev.path);
+  step('🧠','Learned new sensitive path',ev.path+' → stored in SurrealDB','amber');break;
+ case 'say':
+  var c=$('chip');c.textContent=(ev.who||'').toUpperCase();c.className=ev.who||'';
+  $('line').textContent=ev.text||'';
+  if(ev.audio&&$('voice').checked){queue.push(ev.audio);playNext()}
+  break;
+ case 'info':$('help').textContent=ev.text;break;
+ case 'error':step('❌','Error',ev.text,'red');break;
+ case 'done':setBusy(false);refresh();if(es){es.close();es=null}break;
+ }}
+function run(name){
+ if(es){es.close();es=null}
+ setBusy(true);
+ if(name!=='reset'&&name!=='battery')clearRun();
+ var base=$('offline').checked?'/playback/':'/scenario/';
+ es=new EventSource(base+name);
+ es.onmessage=function(m){try{handle(JSON.parse(m.data))}catch(e){console.error(e)}};
+ es.onerror=function(){if(es){es.close();es=null}setBusy(false)};
+}
+document.querySelectorAll('button[data-s]').forEach(function(b){b.onclick=function(){run(b.dataset.s)}});
+refresh();
+})();
+</script>
+</body>
+</html>

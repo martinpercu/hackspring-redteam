@@ -39,11 +39,11 @@ and re-attacks to measure whether the guardrail now holds. Everything is measure
 | Sponsor | Role in the project | Status |
 |---|---|---|
 | Daytona | Sandbox where the victim agent runs; holds the decoy secrets; serves attack pages via signed preview URL | used |
-| Arize AX | Traces every step including LLM spans; `hijacked` evals per attack; online LLM-as-judge task | traces + judge task created; evals {{pending live run}} |
+| Arize AX | Traces every step including LLM spans; `hijacked` evals per attack; online LLM-as-judge task | traces, `hijacked` evals and judge task used |
 | SurrealDB | Embedded; the guardrail's sensitive-path policy is read from the database and grows from incidents | used |
 | ElevenLabs | Attacker / defender narration lines, pre-rendered and cached to disk; final summary | used |
 | Anchor Browser | Real browser as the agent's `browse` backend | planned |
-| Arize experiments | Dataset + experiment comparison across runs | planned |
+| Arize experiments | Dataset `redteam-attacks-1016-1139` and experiments `baseline-1016-1139` vs `guarded-1016-1139` | used |
 
 ## Safeguards
 | Safeguard | Evidence |
@@ -59,13 +59,14 @@ and re-attacks to measure whether the guardrail now holds. Everything is measure
 We do **not** claim resource caps (default Daytona quotas apply).
 
 ## Results
-Model `gpt-4o-mini`, `temperature=0`, measured {{date/time}} with `python redteam.py --compare`.
+Model `gpt-4o-mini`, `temperature=0`, measured on 2026-10-16 with `python redteam.py --compare`.
 | | Result |
 |---|---|
-| No defense | {{X}}/{{N}} attacks leaked |
-| With gates | {{Y}}/{{K}} known attacks leaked |
-| Unseen attack | leaked once → learned → blocked ({{confirm from --learn-arc}}) |
-| Legit tasks | {{W}}/2 still work |
+| No defense | 4/4 attacks leaked |
+| With gates | 1/4 attacks leaked; known attacks 0/3 in 5 of 5 full-battery runs |
+| Unseen attack | leaked in 2 of 5 full-battery runs (6 of 6 when run alone); `--learn-arc`: LEAKED → BLOCKED |
+| Legit tasks | 2/2 OK → 2/2 OK |
+| Baseline calibration | each attack 3/3 |
 | Offline tests | 47 passed (`python tests/run_all.py`) |
 
 ## Honest limits
@@ -100,4 +101,6 @@ python tests/run_all.py     # offline tests, no keys needed
 The attacks are run against our own agent, in our own sandbox, with fake secrets. Do not point them at third-party systems.
 
 ## Transparency
-{{Pick the true one: (a) idea, build plan and test specs prepared the night before; all code generated and assembled during the event with AI coding agents · (b) parts restored from a pre-event prototype: <modules> · (c) built on a prototype made the day before}}
+We prepared the idea, a prototype and a build plan the day before the event. During the event, AI coding agents built the agent, its tools, the runner and CLI, the Daytona range, the dashboard, the voice layer and the Arize integration. A small pure core — the decoy fixtures, the path/domain gates, the deterministic detector, the tracing wrapper and the SurrealDB memory — was restored from the pre-event prototype.
+
+Code: https://github.com/martinpercu/hackspring-redteam

@@ -75,6 +75,15 @@ Model `gpt-4o-mini`, `temperature=0`, measured {{date/time}} with `python redtea
 - **One victim model, 4 attacks and 2 legitimate tasks.** A demonstration, not a benchmark. `temperature=0` does not guarantee full determinism.
 - `LEAKED` means "the decoy token left through the exit tool", which is a mock.
 
+## Try it without any keys
+```bash
+pip install -r requirements.txt     # 1. install
+python dashboard.py                 # 2. start the dashboard
+# 3. open http://localhost:8787, tick "📼 Offline (recorded)", then press buttons 1 → 4 and "Full battery"
+```
+This replays real recorded runs of the engine: no keys and no network needed.
+With `DAYTONA_API_KEY` and `OPENAI_API_KEY` set, the same dashboard runs the live engine instead (untick "Offline").
+
 ## Run it
 ```bash
 python3 -m venv .venv && source .venv/bin/activate

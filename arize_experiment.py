@@ -34,8 +34,8 @@ def run_experiments(dry_run: bool) -> None:
                                     explanation=output["detail"])
 
         for mode in ("baseline", "guarded"):
-            def task(example, _mode=mode):
-                name = example.dataset_row["attack"]
+            def task(dataset_row, _mode=mode):          # 1er param = fila del dataset (dict). `_mode` tiene default -> el SDK lo ignora
+                name = dataset_row["attack"]
                 r = runner.run_attack(by_name[name], urls[name], [c1, c2], _mode == "guarded",
                                       f"exp-{ts}", mem)
                 return {"verdict": r["verdict"], "leaked": r["leaked"], "detail": r["detail"]}

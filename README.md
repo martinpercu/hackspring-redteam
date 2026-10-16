@@ -1,5 +1,7 @@
 # Agent Red Team
 
+**Demo video:** https://youtu.be/nZFH07MnPiA
+
 **A firing range that hijacks your AI agent — then proves the guardrail holds.**
 Built at Daytona × Arize HackSprint #6 (NYC, 2026-10-16).
 

@@ -1,0 +1,15 @@
+# Agent Red Team — deps. Versiones top-level fijadas a las que funcionaron el 2026-10-15 (el resto lo resuelve pip).
+# Si algo no instala: NO cambies versiones a ciegas; mira build-plan/03-sdk-cheatsheet.md seccion "Instalacion".
+daytona==0.224.1
+openai==3.31.0
+arize==8.59.1
+arize-otel==0.14.1
+openinference-instrumentation-openai==0.1.65
+openinference-instrumentation==0.1.71
+openinference-semantic-conventions==0.1.41
+elevenlabs==2.72.0
+surrealdb==2.0.0
+anchorbrowser==1.0.1
+playwright==1.64.0
+pandas==2.3.3
+python-dotenv==1.2.4
